@@ -23,6 +23,10 @@ git merge and push branches
 
 **Optional** *(default: `false`)* Execute a dry run. All steps are executed, but no updates are pushed.
 
+### `token`
+
+**Optional** *(default: `${{ github.token }}` )* Personal access token (PAT) used to access the repository. The PAT is stored on a remove-after-run docker container.
+
 ## Example workflow
 
 ```yml
@@ -53,7 +57,7 @@ Generate a developer token with repo scope and substitute it with the stars in t
 Run this command with parameters relevant to your change:
 
 ```shell
-docker run --rm -e "INPUT_SOURCE=dev" -e "INPUT_TARGET=test/dev-clone" -e "INPUT_DRY_RUN=true" -e "GITHUB_SERVER_URL=https://github.com" -e "GITHUB_REPOSITORY=morbalint/git-merge-action"  -e "GITHUB_TOKEN=******" --workdir=/src -v "$(pwd):/src"  $(docker build -q .)
+docker run --rm -e "INPUT_SOURCE=dev" -e "INPUT_TARGET=test/dev-clone" -e "INPUT_DRY_RUN=true" -e "GITHUB_SERVER_URL=https://github.com" -e "GITHUB_REPOSITORY=morbalint/git-merge-action"  -e "INPUT_TOKEN=******" --workdir=/src -v "$(pwd):/src"  $(docker build -q .)
 ```
 
 ### Using workflows

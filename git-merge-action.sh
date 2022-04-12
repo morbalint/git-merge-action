@@ -21,7 +21,7 @@ git remote add --fetch \
   --track "$INPUT_SOURCE" \
   --track "$INPUT_TARGET" \
   origin \
-  "https://$GITHUB_TOKEN@${GITHUB_SERVER_URL#*//}/${GITHUB_REPOSITORY}.git"
+  "https://x-access-token:$INPUT_TOKEN@${GITHUB_SERVER_URL#*//}/${GITHUB_REPOSITORY}.git"
 
 git switch "$INPUT_TARGET"
 git merge "origin/$INPUT_SOURCE" -m "merge $INPUT_SOURCE into $INPUT_TARGET"
