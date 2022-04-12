@@ -1,0 +1,28 @@
+name: Test this action
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  simple-merge:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          source: test/branch-A
+          target: test/branch-B
+          dry_run: true
+  mirror-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          source: dev
+          target: test/dev-clone

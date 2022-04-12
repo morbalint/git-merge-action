@@ -1,0 +1,26 @@
+name: 'Git Merge & Push Action'
+description: 'Merge two git branches and push the result'
+inputs:
+  source:
+    description: 'Source branch to merge into the target branch'
+    required: true
+    default: ''
+  target:
+    description: 'Target branch of the merge operation'
+    required: true
+    default: ''
+  user_email:
+    description: 'git config user.email for the merge commit'
+    required: false
+    default: 'git-merge-action@github.com'
+  user_name:
+    description: 'git config user.name for the merge commit'
+    required: false
+    default: 'git merge action'
+  dry_run:
+    description: 'Execute a dry run'
+    required: false
+    default: 'false'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
