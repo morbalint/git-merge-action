@@ -1,5 +1,8 @@
 name: 'Git Merge & Push Action'
 description: 'Merge two git branches and push the result'
+branding: 
+  icon: git-merge
+  color: blue
 inputs:
   source:
     description: 'Source branch to merge into the target branch'
