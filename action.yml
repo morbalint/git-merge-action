@@ -1,0 +1,43 @@
+name: 'Git Merge & Push Action'
+description: 'Merge two git branches and push the result'
+branding: 
+  icon: git-merge
+  color: blue
+inputs:
+  target:
+    description: 'Target branch of the merge operation, ours'
+    required: true
+    default: ''
+  source:
+    description: 'Source branch to merge into our branch, theirs'
+    required: false
+    default: ''
+  user_email:
+    description: 'git config user.email for the merge commit'
+    required: false
+    default: 'git-merge-action@github.com'
+  user_name:
+    description: 'git config user.name for the merge commit'
+    required: false
+    default: 'git merge action'
+  dry_run:
+    description: 'Execute a dry run'
+    required: false
+    default: 'false'
+  token:
+    description: >
+      Personal access token (PAT) used to fetch the repository. The PAT is configured
+      with the local git config, which enables your scripts to run authenticated git
+      commands. The docker container is destroyed after running removing the PAT.
+
+
+      We recommend using a service account with the least permissions necessary.
+      Also when generating a new PAT, select the least scopes necessary.
+
+
+      [Learn more about creating and using encrypted secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)
+    required: false
+    default: ${{ github.token }}
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
