@@ -12,6 +12,10 @@ inputs:
     description: 'Source branch to merge into our branch, theirs'
     required: false
     default: ''
+  strategy_options:
+    description: 'Comma separated list of options for the `ort` merge strategy'
+    required: false
+    default: ''
   user_email:
     description: 'git config user.email for the merge commit'
     required: false

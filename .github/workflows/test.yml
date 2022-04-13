@@ -26,3 +26,13 @@ jobs:
         with:
           source: dev
           target: test/dev-clone
+  merge-conflict:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          source: test/conflict-theirs
+          target: test/conflict-ours
+          strategy_options: ours,renormalize
+          dry_run: true
