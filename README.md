@@ -15,6 +15,10 @@ Merge the `source` branch into the `target` branch and push the merge commit on 
 
 **Optional** *(default: `${GITHUB_REF##*/}`)* Source branch to merge into the target branch, 'theirs'. Defaults to the branch this action is running on. 
 
+### `strategy_options`
+
+**Optional** *(default: empty)* Comma separated list of options for the `ort` [merge strategy](https://git-scm.com/docs/merge-strategies).  
+
 ### `user_email`
 
 **Optional** *(default: `git-merge-action@github.com`)* The `git config user.email` for the merge commit.
@@ -34,7 +38,7 @@ Merge the `source` branch into the `target` branch and push the merge commit on 
 ## Example workflow
 
 ```yml
-name: Merge any releas branch into dev
+name: Merge any release branch into dev
 
 on: 
   push:
@@ -47,8 +51,8 @@ jobs:
     steps:
       - uses: morbalint/git-merge-action@v1
         with:
-          target: "dev"
-          dry-run: true
+          target: 'dev'
+          strategy_options: 'ours'
 ```
 
 ## Testing
