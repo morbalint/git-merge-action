@@ -51,8 +51,8 @@ jobs:
     steps:
       - uses: morbalint/git-merge-action@v1
         with:
-          target: "dev"
-          dry-run: true
+          target: 'dev'
+          strategy_options: 'ours'
 ```
 
 ## Testing
