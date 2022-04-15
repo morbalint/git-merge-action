@@ -6,15 +6,16 @@ INPUT_SOURCE=${INPUT_SOURCE:-${GITHUB_REF##*/}}
 INPUT_USER_EMAIL=${INPUT_USER_EMAIL:-git-merge-action@${GITHUB_SERVER_URL#*//}}
 INPUT_USER_NAME=${INPUT_USER_NAME:-git merge action}
 INPUT_DRY_RUN=${INPUT_DRY_RUN:-false}
+INPUT_STRATEGY_OPTIONS=${INPUT_STRATEGY_OPTIONS:-}
 
 echo "SOURCE=$INPUT_SOURCE"
 echo "TARGET=$INPUT_TARGET"
-echo "STRATEGY_OPTIONS=${INPUT_STRATEGY_OPTIONS:-}"
+echo "STRATEGY_OPTIONS=$INPUT_STRATEGY_OPTIONS"
 echo "USER_EMAIL=$INPUT_USER_EMAIL"
 echo "USER_NAME=$INPUT_USER_NAME"
 echo "DRY_RUN=$INPUT_DRY_RUN"
 
-mkdir /git-merge-action-temp && cd /git-merge-action-temp
+cd /tmp
 git init -q
 git config --local user.email "${INPUT_USER_EMAIL}"
 git config --local user.name "${INPUT_USER_NAME}"
