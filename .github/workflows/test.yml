@@ -36,3 +36,11 @@ jobs:
           target: test/conflict-ours
           strategy_options: ours,renormalize
           dry_run: true
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mig4/setup-bats@v1
+        with:
+          bats-version: 1.6.0
+      - uses: actions/checkout@v2
+      - run: ./tests.bats
